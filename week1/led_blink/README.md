@@ -50,3 +50,15 @@ Since this is a text-based layout, follow these hardware pin mapping connections
   Blink count: 1 | Delay: 120
   Blink count: 2 | Delay: 435
   Blink count: 3 | Delay: 980
+Troubleshooting Tips
+Issue 1: Serial Monitor Output is displaying unreadable characters or gibberish text.
+
+Resolution: Check the drop-down menu in the bottom-right corner of your Serial Monitor window. Ensure that the communication speed matches the Serial.begin(9600) configuration specified inside the setup code block.
+
+Issue 2: The LED remains consistently on or does not light up at all.
+
+Resolution: LEDs are polarized components and pass current in only one direction. Ensure the longer lead (Anode) is directed toward the digital pin, and check that your current-limiting resistor connections are tightly plugged in.
+
+Issue 3: Modifying the potentiometer rotation doesn't change the blinking frequency.
+
+Resolution: Ensure your wiper wire is firmly seated in pin A0 rather than a digital pin, and inspect whether you inadvertently mixed up the 5V and ground pins across the outer edges of the dial terminal.
