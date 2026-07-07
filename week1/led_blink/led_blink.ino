@@ -1,3 +1,11 @@
+/**
+ * @file led_blink.ino
+ * @author [Your Name]
+ * @date July 2026
+ * @brief Dynamic IoT LED blink tracking system with potentiometer speed control.
+ * Assignment submission for IIT Jammu Summer School 2026.
+ */
+
 int blinkCount = 0;
 int potPin = A0;
 int delayTime = 500;
@@ -8,7 +16,6 @@ void setup() {
 }
 
 void loop() {
-  // Read potentiometer value (0 to 1023)
   delayTime = analogRead(potPin); 
 
   digitalWrite(13, HIGH);
@@ -19,6 +26,6 @@ void loop() {
   blinkCount++;
   Serial.print("Blink count: ");
   Serial.print(blinkCount);
-  Serial.git checkoutprint(" | Delay: ");
+  Serial.print(" | Delay: ");
   Serial.println(delayTime);
 }
