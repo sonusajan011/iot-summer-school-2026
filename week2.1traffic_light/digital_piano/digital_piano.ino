@@ -26,14 +26,18 @@ void setup() {
 }
 
 void loop() {
-  // Active-LOW logic due to INPUT_PULLUP
   bool pressDo = (digitalRead(BTN_DO) == LOW);
   bool pressRe = (digitalRead(BTN_RE) == LOW);
   bool pressMi = (digitalRead(BTN_MI) == LOW);
   bool pressFa = (digitalRead(BTN_FA) == LOW);
 
-  // Feature 1: Single note execution
-  if (pressDo) {
+  // Count total active presses
+  int totalPressed = pressDo + pressRe + pressMi + pressFa;
+
+  // Feature 3: Dual button press override
+  if (totalPressed >= 2) {
+    tone(BUZZER_PIN, NOTE_SOL);
+  } else if (pressDo) {
     tone(BUZZER_PIN, NOTE_DO);
   } else if (pressRe) {
     tone(BUZZER_PIN, NOTE_RE);
@@ -42,6 +46,6 @@ void loop() {
   } else if (pressFa) {
     tone(BUZZER_PIN, NOTE_FA);
   } else {
-    noTone(BUZZER_PIN); // Feature 2: Release silences buzzer
+    noTone(BUZZER_PIN);
   }
 }
